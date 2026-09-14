@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as CaseStudyRouteImport } from './routes/case-study'
+import { Route as DemoRouteImport } from './routes/demo'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
@@ -37,6 +38,11 @@ const ArchitectureRoute = ArchitectureRouteImport.update({
 const CaseStudyRoute = CaseStudyRouteImport.update({
   id: '/case-study',
   path: '/case-study',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRoute = DemoRouteImport.update({
+  id: '/demo',
+  path: '/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpactRoute = ImpactRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/architecture': typeof ArchitectureRoute
   '/case-study': typeof CaseStudyRoute
+  '/demo': typeof DemoRoute
   '/impact': typeof ImpactRoute
   '/pricing': typeof PricingRoute
   '/roadmap': typeof RoadmapRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/architecture': typeof ArchitectureRoute
   '/case-study': typeof CaseStudyRoute
+  '/demo': typeof DemoRoute
   '/impact': typeof ImpactRoute
   '/pricing': typeof PricingRoute
   '/roadmap': typeof RoadmapRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/architecture': typeof ArchitectureRoute
   '/case-study': typeof CaseStudyRoute
+  '/demo': typeof DemoRoute
   '/impact': typeof ImpactRoute
   '/pricing': typeof PricingRoute
   '/roadmap': typeof RoadmapRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/architecture'
     | '/case-study'
+    | '/demo'
     | '/impact'
     | '/pricing'
     | '/roadmap'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/architecture'
     | '/case-study'
+    | '/demo'
     | '/impact'
     | '/pricing'
     | '/roadmap'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/architecture'
     | '/case-study'
+    | '/demo'
     | '/impact'
     | '/pricing'
     | '/roadmap'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ArchitectureRoute: typeof ArchitectureRoute
   CaseStudyRoute: typeof CaseStudyRoute
+  DemoRoute: typeof DemoRoute
   ImpactRoute: typeof ImpactRoute
   PricingRoute: typeof PricingRoute
   RoadmapRoute: typeof RoadmapRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/case-study'
       fullPath: '/case-study'
       preLoaderRoute: typeof CaseStudyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo': {
+      id: '/demo'
+      path: '/demo'
+      fullPath: '/demo'
+      preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impact': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ArchitectureRoute: ArchitectureRoute,
   CaseStudyRoute: CaseStudyRoute,
+  DemoRoute: DemoRoute,
   ImpactRoute: ImpactRoute,
   PricingRoute: PricingRoute,
   RoadmapRoute: RoadmapRoute,
