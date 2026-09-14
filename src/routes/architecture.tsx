@@ -26,7 +26,7 @@ export const Route = createFileRoute("/architecture")({
 });
 
 function Architecture() {
-  const [active, setActive] = useState(ARCHITECTURE_NODES[0].id);
+  const [active, setActive] = useState<string>(ARCHITECTURE_NODES[0].id);
   const node = ARCHITECTURE_NODES.find((n) => n.id === active)!;
 
   return (
