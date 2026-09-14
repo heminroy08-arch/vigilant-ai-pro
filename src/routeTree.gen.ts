@@ -14,11 +14,14 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as CaseStudyRouteImport } from './routes/case-study'
 import { Route as DemoRouteImport } from './routes/demo'
+import { Route as DocsRouteImport } from './routes/docs'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as SystemRouteImport } from './routes/system'
 import { Route as WorkflowRouteImport } from './routes/workflow'
+import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
+import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -43,6 +46,11 @@ const CaseStudyRoute = CaseStudyRouteImport.update({
 const DemoRoute = DemoRouteImport.update({
   id: '/demo',
   path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DocsRoute = DocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpactRoute = ImpactRouteImport.update({
@@ -70,6 +78,16 @@ const WorkflowRoute = WorkflowRouteImport.update({
   path: '/workflow',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
+  id: '/legal/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalTermsRoute = LegalTermsRouteImport.update({
+  id: '/legal/terms',
+  path: '/legal/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -77,11 +95,14 @@ export interface FileRoutesByFullPath {
   '/architecture': typeof ArchitectureRoute
   '/case-study': typeof CaseStudyRoute
   '/demo': typeof DemoRoute
+  '/docs': typeof DocsRoute
   '/impact': typeof ImpactRoute
   '/pricing': typeof PricingRoute
   '/roadmap': typeof RoadmapRoute
   '/system': typeof SystemRoute
   '/workflow': typeof WorkflowRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -89,11 +110,14 @@ export interface FileRoutesByTo {
   '/architecture': typeof ArchitectureRoute
   '/case-study': typeof CaseStudyRoute
   '/demo': typeof DemoRoute
+  '/docs': typeof DocsRoute
   '/impact': typeof ImpactRoute
   '/pricing': typeof PricingRoute
   '/roadmap': typeof RoadmapRoute
   '/system': typeof SystemRoute
   '/workflow': typeof WorkflowRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -102,11 +126,14 @@ export interface FileRoutesById {
   '/architecture': typeof ArchitectureRoute
   '/case-study': typeof CaseStudyRoute
   '/demo': typeof DemoRoute
+  '/docs': typeof DocsRoute
   '/impact': typeof ImpactRoute
   '/pricing': typeof PricingRoute
   '/roadmap': typeof RoadmapRoute
   '/system': typeof SystemRoute
   '/workflow': typeof WorkflowRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -116,11 +143,14 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/case-study'
     | '/demo'
+    | '/docs'
     | '/impact'
     | '/pricing'
     | '/roadmap'
     | '/system'
     | '/workflow'
+    | '/legal/privacy'
+    | '/legal/terms'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -128,11 +158,14 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/case-study'
     | '/demo'
+    | '/docs'
     | '/impact'
     | '/pricing'
     | '/roadmap'
     | '/system'
     | '/workflow'
+    | '/legal/privacy'
+    | '/legal/terms'
   id:
     | '__root__'
     | '/'
@@ -140,11 +173,14 @@ export interface FileRouteTypes {
     | '/architecture'
     | '/case-study'
     | '/demo'
+    | '/docs'
     | '/impact'
     | '/pricing'
     | '/roadmap'
     | '/system'
     | '/workflow'
+    | '/legal/privacy'
+    | '/legal/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -153,11 +189,14 @@ export interface RootRouteChildren {
   ArchitectureRoute: typeof ArchitectureRoute
   CaseStudyRoute: typeof CaseStudyRoute
   DemoRoute: typeof DemoRoute
+  DocsRoute: typeof DocsRoute
   ImpactRoute: typeof ImpactRoute
   PricingRoute: typeof PricingRoute
   RoadmapRoute: typeof RoadmapRoute
   SystemRoute: typeof SystemRoute
   WorkflowRoute: typeof WorkflowRoute
+  LegalPrivacyRoute: typeof LegalPrivacyRoute
+  LegalTermsRoute: typeof LegalTermsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -197,6 +236,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/impact': {
       id: '/impact'
       path: '/impact'
@@ -232,6 +278,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkflowRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal/privacy': {
+      id: '/legal/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof LegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/terms': {
+      id: '/legal/terms'
+      path: '/legal/terms'
+      fullPath: '/legal/terms'
+      preLoaderRoute: typeof LegalTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -241,11 +301,14 @@ const rootRouteChildren: RootRouteChildren = {
   ArchitectureRoute: ArchitectureRoute,
   CaseStudyRoute: CaseStudyRoute,
   DemoRoute: DemoRoute,
+  DocsRoute: DocsRoute,
   ImpactRoute: ImpactRoute,
   PricingRoute: PricingRoute,
   RoadmapRoute: RoadmapRoute,
   SystemRoute: SystemRoute,
   WorkflowRoute: WorkflowRoute,
+  LegalPrivacyRoute: LegalPrivacyRoute,
+  LegalTermsRoute: LegalTermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
