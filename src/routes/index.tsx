@@ -87,8 +87,8 @@ function HeroVisual() {
             cy={n.y}
             r={0.9}
             className="fill-primary"
-            initial={reduce ? undefined : { opacity: 0.25 }}
-            animate={reduce ? undefined : { opacity: [0.25, 1, 0.25] }}
+            initial={{ opacity: 0.25 }}
+            animate={reduce ? { opacity: 0.7 } : { opacity: [0.25, 1, 0.25] }}
             transition={{ duration: 3.2, repeat: Infinity, delay: i * 0.45 }}
           />
         ))}
