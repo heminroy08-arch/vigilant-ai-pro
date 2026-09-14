@@ -12,6 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
+import { Route as CaseStudyRouteImport } from './routes/case-study'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as SystemRouteImport } from './routes/system'
 import { Route as WorkflowRouteImport } from './routes/workflow'
 
@@ -30,6 +34,26 @@ const ArchitectureRoute = ArchitectureRouteImport.update({
   path: '/architecture',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CaseStudyRoute = CaseStudyRouteImport.update({
+  id: '/case-study',
+  path: '/case-study',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoadmapRoute = RoadmapRouteImport.update({
+  id: '/roadmap',
+  path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SystemRoute = SystemRouteImport.update({
   id: '/system',
   path: '/system',
@@ -45,6 +69,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/architecture': typeof ArchitectureRoute
+  '/case-study': typeof CaseStudyRoute
+  '/impact': typeof ImpactRoute
+  '/pricing': typeof PricingRoute
+  '/roadmap': typeof RoadmapRoute
   '/system': typeof SystemRoute
   '/workflow': typeof WorkflowRoute
 }
@@ -52,6 +80,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/architecture': typeof ArchitectureRoute
+  '/case-study': typeof CaseStudyRoute
+  '/impact': typeof ImpactRoute
+  '/pricing': typeof PricingRoute
+  '/roadmap': typeof RoadmapRoute
   '/system': typeof SystemRoute
   '/workflow': typeof WorkflowRoute
 }
@@ -60,21 +92,57 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/architecture': typeof ArchitectureRoute
+  '/case-study': typeof CaseStudyRoute
+  '/impact': typeof ImpactRoute
+  '/pricing': typeof PricingRoute
+  '/roadmap': typeof RoadmapRoute
   '/system': typeof SystemRoute
   '/workflow': typeof WorkflowRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/architecture' | '/system' | '/workflow'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/architecture'
+    | '/case-study'
+    | '/impact'
+    | '/pricing'
+    | '/roadmap'
+    | '/system'
+    | '/workflow'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/architecture' | '/system' | '/workflow'
-  id: '__root__' | '/' | '/about' | '/architecture' | '/system' | '/workflow'
+  to:
+    | '/'
+    | '/about'
+    | '/architecture'
+    | '/case-study'
+    | '/impact'
+    | '/pricing'
+    | '/roadmap'
+    | '/system'
+    | '/workflow'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/architecture'
+    | '/case-study'
+    | '/impact'
+    | '/pricing'
+    | '/roadmap'
+    | '/system'
+    | '/workflow'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ArchitectureRoute: typeof ArchitectureRoute
+  CaseStudyRoute: typeof CaseStudyRoute
+  ImpactRoute: typeof ImpactRoute
+  PricingRoute: typeof PricingRoute
+  RoadmapRoute: typeof RoadmapRoute
   SystemRoute: typeof SystemRoute
   WorkflowRoute: typeof WorkflowRoute
 }
@@ -102,6 +170,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArchitectureRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/case-study': {
+      id: '/case-study'
+      path: '/case-study'
+      fullPath: '/case-study'
+      preLoaderRoute: typeof CaseStudyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/roadmap': {
+      id: '/roadmap'
+      path: '/roadmap'
+      fullPath: '/roadmap'
+      preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/system': {
       id: '/system'
       path: '/system'
@@ -123,6 +219,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ArchitectureRoute: ArchitectureRoute,
+  CaseStudyRoute: CaseStudyRoute,
+  ImpactRoute: ImpactRoute,
+  PricingRoute: PricingRoute,
+  RoadmapRoute: RoadmapRoute,
   SystemRoute: SystemRoute,
   WorkflowRoute: WorkflowRoute,
 }
